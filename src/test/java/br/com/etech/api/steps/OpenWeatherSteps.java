@@ -34,4 +34,10 @@ public class OpenWeatherSteps {
     public void queEuInformeAIdDaCidadeParaPesquisaDeClima(String cityID) {
         this.openWeatherFuncionalidade.addRequestParam("id", cityID);
     }
+
+    @E("^que eu informe a latitude \"([^\"]*)\" e a longitude \"([^\"]*)\" da cidade para pesquisa de clima$")
+    public void queEuInformeALatitudeEALongitudeDaCidadeParaPesquisaDeClima(String lat, String lon) {
+        this.openWeatherFuncionalidade.addRequestParam("lat", lat);
+        this.openWeatherFuncionalidade.addRequestParam("lon", lon);
+    }
 }
