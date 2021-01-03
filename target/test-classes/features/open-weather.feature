@@ -34,3 +34,10 @@
       Quando realizar uma requisição "GET" na url "https://api.openweathermap.org/data/2.5/weather?zip={zip}&appid={appid}"
       Então devo receber o status "200"
       E devo receber a chave "name" com o valor "Bentonville" no retorno do serviço
+
+    @weatherByRectangleZone
+    Cenario: Buscar climas dentro de uma area retangular
+      E que eu informe a longitude esquerda "12", a latitude inferior "32", a longitude direita "15", a latitude superior "37" e o zoom "10" do retangulo para pesquisa de clima
+      Quando realizar uma requisição "GET" na url "https://api.openweathermap.org/data/2.5/box/city?bbox={lon-left},{lat-bottom},{lon-right},{lat-top},{zoom}&appid={appid}"
+      Então devo receber o status "200"
+      E devo receber a chave "list" no retorno do serviço

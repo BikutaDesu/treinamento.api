@@ -45,4 +45,13 @@ public class OpenWeatherSteps {
     public void queEuInformeOZipcodeDaCidadeParaPesquisaDeClima(String zipcode) {
         this.openWeatherFuncionalidade.addRequestParam("zip", zipcode);
     }
+
+    @E("^que eu informe a longitude esquerda \"([^\"]*)\", a latitude inferior \"([^\"]*)\", a longitude direita \"([^\"]*)\", a latitude superior \"([^\"]*)\" e o zoom \"([^\"]*)\" do retangulo para pesquisa de clima$")
+    public void queEuInformeALongitudeEsquerdaALatitudeInferiorALongitudeDireitaALatitudeSuperiorEOZoomDoRetanguloParaPesquisaDeClima(String lonLeft, String latBottom, String lonRight, String latTop, String zoom) throws Throwable {
+        this.openWeatherFuncionalidade.addRequestParam("lon-left", lonLeft);
+        this.openWeatherFuncionalidade.addRequestParam("lon-right", lonRight);
+        this.openWeatherFuncionalidade.addRequestParam("lat-bottom", latBottom);
+        this.openWeatherFuncionalidade.addRequestParam("lat-top", latTop);
+        this.openWeatherFuncionalidade.addRequestParam("zoom", zoom);
+    }
 }
