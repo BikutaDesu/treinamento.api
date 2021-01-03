@@ -40,4 +40,9 @@ public class OpenWeatherSteps {
         this.openWeatherFuncionalidade.addRequestParam("lat", lat);
         this.openWeatherFuncionalidade.addRequestParam("lon", lon);
     }
+
+    @E("^que eu informe o zipcode \"([^\"]*)\" da cidade para pesquisa de clima$")
+    public void queEuInformeOZipcodeDaCidadeParaPesquisaDeClima(String zipcode) {
+        this.openWeatherFuncionalidade.addRequestParam("zip", zipcode);
+    }
 }

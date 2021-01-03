@@ -27,3 +27,10 @@
       Quando realizar uma requisição "GET" na url "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={appid}"
       Então devo receber o status "200"
       E devo receber a chave "name" com o valor "Shuzenji" no retorno do serviço
+
+    @weatherByZipCode
+    Cenario: Buscar clima atual por zipcode
+      E que eu informe o zipcode "72716" da cidade para pesquisa de clima
+      Quando realizar uma requisição "GET" na url "https://api.openweathermap.org/data/2.5/weather?zip={zip}&appid={appid}"
+      Então devo receber o status "200"
+      E devo receber a chave "name" com o valor "Bentonville" no retorno do serviço
