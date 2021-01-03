@@ -13,3 +13,10 @@
       Quando realizar uma requisição "GET" na url "https://api.openweathermap.org/data/2.5/weather?q={q}&appid={appid}"
       Então devo receber o status "200"
       E devo receber a chave "name" com o valor "Itaquera" no retorno do serviço
+
+    @weatherByCityID
+    Cenario: Buscar clima atual pela ID da cidade
+      E que eu informe a id da cidade "3448433" para pesquisa de clima
+      Quando realizar uma requisição "GET" na url "https://api.openweathermap.org/data/2.5/weather?id={id}&appid={appid}"
+      Então devo receber o status "200"
+      E devo receber a chave "name" com o valor "São Paulo" no retorno do serviço

@@ -29,4 +29,9 @@ public class OpenWeatherSteps {
     public void devoReceberAChaveComOValorNoRetornoDoServico(String key, String value) {
         this.openWeatherFuncionalidade.checkKeyAndValue(key, value);
     }
+
+    @E("^que eu informe a id da cidade \"([^\"]*)\" para pesquisa de clima$")
+    public void queEuInformeAIdDaCidadeParaPesquisaDeClima(String cityID) {
+        this.openWeatherFuncionalidade.addRequestParam("id", cityID);
+    }
 }
