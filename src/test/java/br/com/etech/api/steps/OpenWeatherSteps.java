@@ -54,4 +54,17 @@ public class OpenWeatherSteps {
         this.openWeatherFuncionalidade.addRequestParam("lat-top", latTop);
         this.openWeatherFuncionalidade.addRequestParam("zoom", zoom);
     }
+
+    @E("^que eu informe a latitude \"([^\"]*)\", a longitude \"([^\"]*)\" e o numero de cidades \"([^\"]*)\" ao redor do ponto para pesquisa de clima$")
+    public void queEuInformeALatitudeALongitudeEONumeroDeCidadesAoRedorDoPontoParaPesquisaDeClima(String lat, String lon, String cnt) {
+        this.openWeatherFuncionalidade.addRequestParam("lat", lat);
+        this.openWeatherFuncionalidade.addRequestParam("lon", lon);
+        this.openWeatherFuncionalidade.addRequestParam("cnt", cnt);
+    }
+
+    @E("^que eu informe as ids das cidades \"([^\"]*)\", \"([^\"]*)\" e \"([^\"]*)\" para pesquisa de clima$")
+    public void queEuInformeAsIdsDasCidadesEParaPesquisaDeClima(String id0, String id1, String id2) {
+        String ids = id0 + "," + id1 + "," +id2;
+        this.openWeatherFuncionalidade.addRequestParam("id", ids);
+    }
 }

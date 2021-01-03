@@ -21,6 +21,12 @@
       Então devo receber o status "200"
       E devo receber a chave "name" com o valor "São Paulo" no retorno do serviço
 
+    @weatherByCitiesIDs
+    Cenario: Buscar climas pelas IDs das cidades
+      E que eu informe as ids das cidades "3448433", "524901" e "703448" para pesquisa de clima
+      Quando realizar uma requisição "GET" na url "https://api.openweathermap.org/data/2.5/group?id={id}&appid={appid}"
+      Então devo receber o status "200"
+      E devo receber a chave "list" no retorno do serviço
     @weatherByGeographicCoordinates
     Cenario: Buscar clima atual pelas coordenadas geográficas
       E que eu informe a latitude "35" e a longitude "139" da cidade para pesquisa de clima
@@ -42,4 +48,9 @@
       Então devo receber o status "200"
       E devo receber a chave "list" no retorno do serviço
 
-      
+    @weatherByCircleZone
+    Cenario: Buscar climas dentro de uma area circular
+      E que eu informe a latitude "55.5", a longitude "37.5" e o numero de cidades "10" ao redor do ponto para pesquisa de clima
+      Quando realizar uma requisição "GET" na url "https://api.openweathermap.org/data/2.5/find?lat={lat}&lon={lon}&cnt={cnt}&appid={appid}"
+      Então devo receber o status "200"
+      E devo receber a chave "list" no retorno do serviço
