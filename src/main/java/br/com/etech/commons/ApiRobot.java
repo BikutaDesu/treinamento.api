@@ -11,6 +11,7 @@ import static io.restassured.RestAssured.*;
 
 public class ApiRobot {
 
+    private static ApiRobot apiRobotInstance;
     private final Map<String, String> requestParams;
     private final Map<String, String> requestBody;
     private final Map<String, String> requestHeaders;
@@ -18,10 +19,23 @@ public class ApiRobot {
     private Map<String, String> cookies;
     private Integer statusCode;
 
-    public ApiRobot() {
+    private ApiRobot() {
         requestParams = new HashMap<String, String>();
         requestBody = new HashMap<String, String>();
         requestHeaders = new HashMap<String, String>();
+    }
+
+    public static ApiRobot getInstance() {
+        if (apiRobotInstance == null) {
+            apiRobotInstance = new ApiRobot();
+        }
+        return apiRobotInstance;
+    }
+
+    public void clearRequestData() {
+        requestParams.clear();
+        requestHeaders.clear();
+        requestBody.clear();
     }
 
     public void getRequest(String url) {
