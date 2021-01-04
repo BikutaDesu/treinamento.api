@@ -1,14 +1,15 @@
 package br.com.etech.api.funcionalidades;
 
 import br.com.etech.commons.ApiRobot;
+import br.com.etech.strategy.*;
 import org.junit.Assert;
 
-public class ReqResUsersFuncionalidade {
+public class ReqResFuncionalidade {
 
     private ApiRobot apiRobot;
 
-    public ReqResUsersFuncionalidade() {
-        apiRobot = new ApiRobot();
+    public ReqResFuncionalidade() {
+        apiRobot = ApiRobot.getInstance();
     }
 
     public void addRequestParam(String key, String value) {
@@ -20,20 +21,20 @@ public class ReqResUsersFuncionalidade {
     }
 
     public void request(String method, String url) {
+        RequestStrategy requestStrategy = new GetRequestStrategy();
         switch (method) {
-            case "GET":
-                this.apiRobot.getRequest(url);
-                break;
             case "POST":
-                this.apiRobot.postRequest(url);
+                requestStrategy = new PostRequestStrategy();
                 break;
             case "PUT":
-                this.apiRobot.putRequest(url);
+                requestStrategy = new PutRequestStrategy();
                 break;
             case "DELETE":
-                this.apiRobot.deleteRequest(url);
+                requestStrategy = new DeleteRequestStrategy();
                 break;
+
         }
+        this.apiRobot.request(url, requestStrategy);
     }
 
     public void checkStatus(String status) {
