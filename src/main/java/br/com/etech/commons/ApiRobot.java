@@ -1,14 +1,10 @@
 package br.com.etech.commons;
 
 import br.com.etech.strategy.RequestStrategy;
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static io.restassured.RestAssured.*;
 
 public class ApiRobot {
 

@@ -35,11 +35,6 @@ public class ReqResSteps {
         this.reqResFuncionalidade.addRequestParam("delay", delay);
     }
 
-    @Quando("^realizar uma requisição \"([^\"]*)\" na url \"([^\"]*)\"$")
-    public void realizarUmaRequisicaoNaUrl(String method, String url) {
-        this.reqResFuncionalidade.request(method, url);
-    }
-
     @Dado("^que eu passe o email \"([^\"]*)\" e a senha \"([^\"]*)\" no body da requisição$")
     public void queEuPasseOEmailEASenhaNoBodyDaRequisicao(String email, String password) {
         this.reqResFuncionalidade.addToRequestBody("email", email);
@@ -49,6 +44,11 @@ public class ReqResSteps {
     @Dado("^que eu passe o email \"([^\"]*)\" no body da requisição$")
     public void queEuPasseOEmailNoBodyDaRequisição(String email) {
         this.reqResFuncionalidade.addToRequestBody("email", email);
+    }
+
+    @Quando("^realizar uma requisição \"([^\"]*)\" na url \"([^\"]*)\"$")
+    public void realizarUmaRequisicaoNaUrl(String method, String url) {
+        this.reqResFuncionalidade.request(method, url);
     }
 
     @Então("^devo receber o status \"([^\"]*)\"$")

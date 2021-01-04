@@ -1,6 +1,7 @@
 package br.com.etech.strategy;
 
 import br.com.etech.commons.ApiRobot;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
@@ -12,7 +13,8 @@ public class DeleteRequestStrategy implements RequestStrategy {
         ApiRobot apiRobot = ApiRobot.getInstance();
         Response response =
             given()
-                .contentType("application/json; charset=utf-8")
+//                .contentType("application/json; charset=utf-8")
+                .contentType(ContentType.JSON)
                 .pathParams(apiRobot.getRequestParams())
                 .body(apiRobot.getRequestBody())
             .when()

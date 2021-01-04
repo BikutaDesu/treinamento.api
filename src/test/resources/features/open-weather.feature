@@ -5,7 +5,7 @@
   Funcionalidade: Clima atual
 
     Contexto:
-      Dado que eu informe a chave de api "cc7d547753a20fb8fd136a18c5e22eff"
+      Dado que eu informe a chave de api
 
     @weatherByCityName
     Cenario: Buscar clima atual pelo nome da cidade

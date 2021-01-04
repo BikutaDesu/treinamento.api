@@ -1,8 +1,7 @@
 package br.com.etech.api.steps;
 
 import br.com.etech.api.funcionalidades.OpenWeatherFuncionalidade;
-import br.com.etech.commons.ApiRobot;
-import cucumber.api.PendingException;
+import br.com.etech.commons.PropertiesManager;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.E;
 
@@ -15,9 +14,9 @@ public class OpenWeatherSteps {
         this.openWeatherFuncionalidade = new OpenWeatherFuncionalidade();
     }
 
-    @Dado("^que eu informe a chave de api \"([^\"]*)\"$")
-    public void queEuInformeAChaveDeApi(String apiKey) {
-        this.openWeatherFuncionalidade.addRequestParam("appid", apiKey);
+    @Dado("^que eu informe a chave de api$")
+    public void queEuInformeAChaveDeApi() {
+        this.openWeatherFuncionalidade.addRequestParam("appid", PropertiesManager.getPropertiesValue("TOKEN"));
     }
 
     @E("^que eu informe a cidade \"([^\"]*)\" para pesquisa de clima$")
@@ -67,4 +66,5 @@ public class OpenWeatherSteps {
         String ids = id0 + "," + id1 + "," +id2;
         this.openWeatherFuncionalidade.addRequestParam("id", ids);
     }
+
 }
