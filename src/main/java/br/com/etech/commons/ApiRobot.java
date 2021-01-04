@@ -1,5 +1,6 @@
 package br.com.etech.commons;
 
+import br.com.etech.strategy.RequestStrategy;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
@@ -38,71 +39,8 @@ public class ApiRobot {
         requestBody.clear();
     }
 
-    public void getRequest(String url) {
-        Response response =
-            given()
-                .pathParams(getRequestParams())
-                .body(getRequestBody())
-            .when()
-                .get(url)
-            .then()
-                .log().all()
-                .extract().response();
-
-        setStatusCode(response.statusCode());
-        setResponseBody(response.getBody());
-        setCookies(response.getCookies());
-    }
-
-    public void postRequest(String url) {
-        Response response =
-            given()
-                .contentType("application/json; charset=utf-8")
-                .body(getRequestBody())
-                .pathParams(getRequestParams())
-            .when()
-                .post(url)
-            .then()
-                .log().all()
-                .extract().response();
-
-        setStatusCode(response.statusCode());
-        setResponseBody(response.getBody());
-        setCookies(response.getCookies());
-    }
-
-    public void putRequest(String url) {
-        Response response =
-            given()
-                .contentType("application/json; charset=utf-8")
-                .pathParams(getRequestParams())
-                .body(getRequestBody())
-            .when()
-                .put(url)
-            .then()
-                .log().all()
-                .extract().response();
-
-        setStatusCode(response.statusCode());
-        setResponseBody(response.getBody());
-        setCookies(response.getCookies());
-    }
-
-    public void deleteRequest(String url) {
-        Response response =
-            given()
-                .contentType("application/json; charset=utf-8")
-                .pathParams(getRequestParams())
-                .body(getRequestBody())
-            .when()
-                .delete(url)
-            .then()
-                .log().all()
-                .extract().response();
-
-        setStatusCode(response.statusCode());
-        setResponseBody(response.getBody());
-        setCookies(response.getCookies());
+    public void request(String url, RequestStrategy requestStrategy) {
+        requestStrategy.request(url);
     }
 
     public Map<String, String> getRequestParams() {
@@ -133,7 +71,7 @@ public class ApiRobot {
         return responseBody;
     }
 
-    private void setResponseBody(ResponseBody responseBody) {
+    public void setResponseBody(ResponseBody responseBody) {
         this.responseBody = responseBody;
     }
 
@@ -141,7 +79,7 @@ public class ApiRobot {
         return cookies;
     }
 
-    private void setCookies(Map<String, String> cookies) {
+    public void setCookies(Map<String, String> cookies) {
         this.cookies = cookies;
     }
 
@@ -149,7 +87,7 @@ public class ApiRobot {
         return statusCode;
     }
 
-    private void setStatusCode(Integer statusCode) {
+    public void setStatusCode(Integer statusCode) {
         this.statusCode = statusCode;
     }
 }
